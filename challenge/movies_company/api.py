@@ -7,12 +7,11 @@ from .models import *
 class AliasResource(ModelResource):
     class Meta:
         queryset = Alias.objects.all()
-        resource_name = 'aliasses'
-        authorization = Authorization()
+        resource_name = 'aliases'
 
 
 class PersonResource(ModelResource):
-    aliasses = fields.ToManyField(AliasResource, 'aliasses', full=True, full_detail=False)
+    aliases = fields.ToManyField(AliasResource, 'aliases', full=True, full_detail=False)
     movies_as_actor_actress = fields.ToManyField('movies_company.api.MovieResource', 'movies_as_actor_actress', full=True, full_detail=False)
     movies_as_director = fields.ToManyField('movies_company.api.MovieResource', 'movies_as_director', full=True, full_detail=False)
     movies_as_producer = fields.ToManyField('movies_company.api.MovieResource', 'movies_as_producer', full=True, full_detail=False)
@@ -20,7 +19,6 @@ class PersonResource(ModelResource):
     class Meta:
         queryset = Person.objects.all()
         resource_name = 'persons'
-        authorization = Authorization()
 
 
 class MovieResource(ModelResource):
@@ -31,6 +29,3 @@ class MovieResource(ModelResource):
     class Meta:
         queryset = Movie.objects.all()
         resource_name = 'movies'
-        authorization = Authorization()
-
-
