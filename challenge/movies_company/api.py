@@ -2,6 +2,7 @@ from tastypie.resources import ModelResource
 from tastypie.authorization import Authorization
 from tastypie import fields
 from .models import *
+from utils import *
 
 
 class AliasResource(ModelResource):
@@ -32,4 +33,4 @@ class MovieResource(ModelResource):
         resource_name = 'movies'
 
     def dehydrate_release_year(self, bundle):
-        return bundle.obj.release_year.__str__()
+        return int_to_roman(bundle.obj.release_year)
