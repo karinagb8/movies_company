@@ -1,0 +1,36 @@
+from tastypie.resources import ModelResource
+from tastypie.authorization import Authorization
+from tastypie import fields
+from .models import *
+
+
+class AliasResource(ModelResource):
+    class Meta:
+        queryset = Alias.objects.all()
+        resource_name = 'aliasses'
+        authorization = Authorization()
+
+
+class PersonResource(ModelResource):
+    aliasses = fields.ToManyField(AliasResource, 'aliasses', full=True, full_detail=False)
+    movies_as_actor_actress = fields.ToManyField('movies_company.api.MovieResource', 'movies_as_actor_actress', full=True, full_detail=False)
+    movies_as_director = fields.ToManyField('movies_company.api.MovieResource', 'movies_as_director', full=True, full_detail=False)
+    movies_as_producer = fields.ToManyField('movies_company.api.MovieResource', 'movies_as_producer', full=True, full_detail=False)
+
+    class Meta:
+        queryset = Person.objects.all()
+        resource_name = 'persons'
+        authorization = Authorization()
+
+
+class MovieResource(ModelResource):
+    casting = fields.ToManyField(PersonResource, 'casting', full=True, full_detail=False)
+    directors = fields.ToManyField(PersonResource, 'directors', full=True, full_detail=False)
+    producers = fields.ToManyField(PersonResource, 'producers', full=True, full_detail=False)
+
+    class Meta:
+        queryset = Movie.objects.all()
+        resource_name = 'movies'
+        authorization = Authorization()
+
+
