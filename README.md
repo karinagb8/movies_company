@@ -27,7 +27,7 @@ Decissions:
 - The "trusted users" are the ones who are superusers (not staff) and they need an API Key that can be created only by admin users
 - I used sqlite because it was easier to start a database. It's not necessary to install any package or create the database, Django manages automaticaly everything. I usually use PostgreSQL.
 - All the fields are required
-- The fields for 'casting', 'producers' and 'directors' are at Movie's model as a ManyToManyField with a related_name to access from Person's model as 'movies_as_actor_actress', 'movies_as_producer', 'movies_as_director' respectively.
+- The fields for 'casting', 'producers' and 'directors' are at model Movie as a ManyToManyField with a related_name to access from model Person as 'movies_as_actor_actress', 'movies_as_producer', 'movies_as_director' respectively.
 
 Available URLS:
 =======================================
