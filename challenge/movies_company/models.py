@@ -27,7 +27,8 @@ class Movie(models.Model):
         validators=[
             MaxValueValidator(3999),
             MinValueValidator(1)
-        ]
+        ],
+        null=True
     )
     casting = models.ManyToManyField(
         'Person',

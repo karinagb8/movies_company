@@ -3,11 +3,11 @@ from .api import *
 from tastypie.api import Api
 
 
-api = Api(api_name='movies_api')
+api = Api(api_name='api')
 api.register(PersonResource())
 api.register(MovieResource())
 api.register(AliasResource())
 
 urlpatterns = [
-    url(r'^api/', include(api.urls)),
+    url('', include(api.urls)),
 ]

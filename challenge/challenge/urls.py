@@ -20,5 +20,5 @@ from movies_company.models import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('movies_company/', include('movies_company.urls')),
+    path('', include('movies_company.urls')),
 ]
