@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Alias(models.Model):
@@ -22,7 +23,12 @@ class Person(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=300)
-    release_year = models.PositiveIntegerField()
+    release_year = models.PositiveIntegerField(
+        validators=[
+            MaxValueValidator(3999),
+            MinValueValidator(1)
+        ]
+    )
     casting = models.ManyToManyField(
         'Person',
         related_name='movies_as_actor_actress'
