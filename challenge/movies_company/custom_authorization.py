@@ -40,13 +40,7 @@ class TrustedUsersOnlyCanEditAuthorization(Authorization):
             return False
 
     def delete_list(self, object_list, bundle):
-        try:
-            return bundle.request.user.is_superuser
-        except:
-            return False
+        return False
 
     def delete_detail(self, object_list, bundle):
-        try:
-            return bundle.request.user.is_superuser
-        except:
-            return False
+        return False
