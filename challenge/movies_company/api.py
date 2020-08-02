@@ -1,5 +1,5 @@
 from tastypie.resources import ModelResource
-from tastypie.authentication import Authentication
+from tastypie.authentication import Authentication, ApiKeyAuthentication
 from tastypie import fields
 from .custom_authorization import TrustedUsersOnlyCanEditAuthorization
 from .models import *
@@ -10,7 +10,7 @@ class AliasResource(ModelResource):
     class Meta:
         queryset = Alias.objects.all()
         resource_name = 'aliases'
-        authentication = Authentication()
+        authentication = ApiKeyAuthentication()
         authorization = TrustedUsersOnlyCanEditAuthorization()
 
 
@@ -23,7 +23,7 @@ class PersonResource(ModelResource):
     class Meta:
         queryset = Person.objects.all()
         resource_name = 'persons'
-        authentication = Authentication()
+        authentication = ApiKeyAuthentication()
         authorization = TrustedUsersOnlyCanEditAuthorization()
 
 
@@ -36,7 +36,7 @@ class MovieResource(ModelResource):
     class Meta:
         queryset = Movie.objects.all()
         resource_name = 'movies'
-        authentication = Authentication()
+        authentication = ApiKeyAuthentication()
         authorization = TrustedUsersOnlyCanEditAuthorization()
 
     def dehydrate_release_year(self, bundle):

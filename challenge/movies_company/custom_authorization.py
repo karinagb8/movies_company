@@ -11,7 +11,7 @@ class TrustedUsersOnlyCanEditAuthorization(Authorization):
 
     def create_list(self, object_list, bundle):
         try:
-            if bundle.request.user.is_superuser():
+            if bundle.request.user.is_superuser:
                 return object_list
             else:
                 return False    
@@ -20,13 +20,13 @@ class TrustedUsersOnlyCanEditAuthorization(Authorization):
 
     def create_detail(self, object_list, bundle):
         try:
-            return bundle.request.user.is_superuser()
+            return bundle.request.user.is_superuser
         except:
             return False
 
     def update_list(self, object_list, bundle):
         try:
-            if bundle.request.user.is_superuser():
+            if bundle.request.user.is_superuser:
                 return object_list
             else:
                 return False    
@@ -35,18 +35,18 @@ class TrustedUsersOnlyCanEditAuthorization(Authorization):
 
     def update_detail(self, object_list, bundle):
         try:
-            return bundle.request.user.is_superuser()
+            return bundle.request.user.is_superuser
         except:
             return False
 
     def delete_list(self, object_list, bundle):
         try:
-            return bundle.request.user.is_superuser()
+            return bundle.request.user.is_superuser
         except:
             return False
 
     def delete_detail(self, object_list, bundle):
         try:
-            return bundle.request.user.is_superuser()
+            return bundle.request.user.is_superuser
         except:
             return False
