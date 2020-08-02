@@ -32,7 +32,7 @@ class MovieResource(ModelResource):
     casting = fields.ToManyField(PersonResource, 'casting', full=True, full_detail=False)
     directors = fields.ToManyField(PersonResource, 'directors', full=True, full_detail=False)
     producers = fields.ToManyField(PersonResource, 'producers', full=True, full_detail=False)
-    release_year = fields.CharField()
+    release_year = fields.IntegerField()
 
     class Meta:
         queryset = Movie.objects.all()

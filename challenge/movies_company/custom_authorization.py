@@ -14,9 +14,9 @@ class TrustedUsersOnlyCanEditAuthorization(Authorization):
             if bundle.request.user.is_superuser:
                 return object_list
             else:
-                return False    
+                return []    
         except:
-            return False
+            return []
 
     def create_detail(self, object_list, bundle):
         try:
@@ -29,9 +29,9 @@ class TrustedUsersOnlyCanEditAuthorization(Authorization):
             if bundle.request.user.is_superuser:
                 return object_list
             else:
-                return False    
+                return []    
         except:
-            return False
+            return []
 
     def update_detail(self, object_list, bundle):
         try:

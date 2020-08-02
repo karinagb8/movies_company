@@ -31,7 +31,8 @@ class Movie(models.Model):
     )
     casting = models.ManyToManyField(
         'Person',
-        related_name='movies_as_actor_actress'
+        related_name='movies_as_actor_actress',
+        verbose_name='Casting (Actors + Actresses)'
     )
     directors = models.ManyToManyField(
         'Person',
