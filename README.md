@@ -1,5 +1,13 @@
 # movies_company
 
+Used Libraries/Frameworks:
+- Python 3.7.5
+- Django 3.0.8
+- Tastypie 0.14.3
+- sqlite3
+
+=======================================
+
 How to start:
 - Create a virtualenv with python3:
 virtualenv venv --python=python3
@@ -13,9 +21,10 @@ python manage.py migrate
 =======================================
 
 Decissions:
-- Alias can be repeat between different people
+- Alias can be repeated between different people
 - No one can delete records except from de admin site (superusers with is_staff = True)
 - The "trusted users" are the ones who are superusers (not staff) and they need an apikey that can be created only by admin users
+- I used sqlite because it was easier to start a database. It's not necessary to install any package or create the database, Django manages automaticaly everything. I usually use PostgreSQL.
 
 =======================================
 
