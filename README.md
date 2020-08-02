@@ -1,6 +1,5 @@
 # movies_company
 
-=======================================
 Used Libraries/Frameworks:
 =======================================
 - Python 3.7.5
@@ -8,7 +7,6 @@ Used Libraries/Frameworks:
 - Tastypie 0.14.3
 - sqlite3
 
-=======================================
 How to start:
 =======================================
 STEP 1: Create a virtualenv with python3:
@@ -22,7 +20,6 @@ python manage.py migrate
 STEP 5: Access the web site
 http://127.0.0.1:8000/admin
 
-=======================================
 Decissions:
 =======================================
 - The same alias can be used for two or more different users
@@ -32,18 +29,16 @@ Decissions:
 - All the fields are required
 - The fields for 'casting', 'producers' and 'directors' are at Movie's model as a ManyToManyField with a related_name to access from Person's model as 'movies_as_actor_actress', 'movies_as_producer', 'movies_as_director' respectively.
 
-=======================================
 Available URLS:
 =======================================
 Since this application uses Tastypie, several URLs have different behaviour deppending on the parameters. The GET methods are accesible by everyone. UPDATE and CREATE methods require authentication (API Key) and authorization (is superuser).
 The admin site is accesible only by superusers with is_staff = True.
 
----------------------------------------
-- Admin site:
+Admin site:
 ---------------------------------------
 http://127.0.0.1:8000/admin
 
----------------------------------------
+
 Persons:
 ---------------------------------------
 - GET all the persons: 
@@ -61,7 +56,7 @@ http://127.0.0.1:8000/movies_company/api/movies_api/persons/schema/
 - GET a subset of items with ids {{id_person1}}, {{id_person2}}: 
 http://127.0.0.1:8000/movies_company/api/movies_api/persons/set/{{id_person1}};{{id_person2}}/
 
----------------------------------------
+
 Movies:
 ---------------------------------------
 - GET all the movies: 
@@ -79,7 +74,7 @@ http://127.0.0.1:8000/movies_company/api/movies_api/movies/schema/
 - GET a subset of items: 
 http://127.0.0.1:8000/movies_company/api/movies_api/movies/set/{{id_movie1}};{{id_movie2}};..../
 
----------------------------------------
+
 Aliases:
 ---------------------------------------
 - GET all the aliases: 
@@ -97,7 +92,7 @@ http://127.0.0.1:8000/movies_company/api/movies_api/aliases/schema/
 - GET a subset of items: 
 http://127.0.0.1:8000/movies_company/api/movies_api/aliases/set/{{id_alias1}};{{id_alias2}};..../
 
----------------------------------------
+
 Usage with curl for each URL and request method (action) for aliases:
 ---------------------------------------
 - Get Aliasses
@@ -115,7 +110,7 @@ curl --dump-header - -H "Content-Type: application/json" -H "AUTHORIZATION: ApiK
 - Replace the entire collection of Aliases
 curl --dump-header - -H "Content-Type: application/json" -H "AUTHORIZATION: ApiKey {{user}}:{{key}}" -X PUT --data '{"objects": [{"name":"{{alias}}", "id":"{{id}}"}, {"name":"{{alias}}", "id":"{{id}}"}]}' 'http://127.0.0.1:8000/movies_company/api/movies_api/aliases/'
 
-=======================================
+
 Available methods:
 =======================================
 - int_to_roman (from utils.py): it converts an integer number to roman numerals
