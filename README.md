@@ -1,9 +1,55 @@
 # movies_company
 
-Consultas a la api:
-http://127.0.0.1:8000/movies_company/api/movies_api/persons/
-http://127.0.0.1:8000/movies_company/api/movies_api/movies/
+How to start:
+- Create a virtualenv with python3:
+virtualenv venv --python=python3
+- Activate the virtualenv:
+source venv/bin/activate
+- Install the packages from py-requirements:
+pip install -r py-requirements
+- Initialize the database:
+python manage.py migrate
 
+=======================================
+
+Decissions:
+- Alias can be repeat between different people
+- No one can delete records except from de admin site (superusers with is_staff = True)
+- The "trusted users" are the ones who are superusers (not staff) and they need an apikey that can be created only by admin users
+
+=======================================
+
+Available URLS:
+- Get/Update all the persons and to create one person:
+http://127.0.0.1:8000/movies_company/api/movies_api/persons/
+- Get/Update the person with id {{id_person}}:
+http://127.0.0.1:8000/movies_company/api/movies_api/persons/{{id_person}}/
+- Get the resource’s schema for persons
+http://127.0.0.1:8000/movies_company/api/movies_api/persons/schema/
+- Get a subset of items
+http://127.0.0.1:8000/movies_company/api/movies_api/persons/set/{{id_person1}};{{id_person2}};..../
+
+- Get/Update all the movies and to create one movie:
+http://127.0.0.1:8000/movies_company/api/movies_api/movies/
+- Get/Update the movie with id {{id_movie}}:
+http://127.0.0.1:8000/movies_company/api/movies_api/movies/{{id_movie}}/
+- Get the resource’s schema for movies
+http://127.0.0.1:8000/movies_company/api/movies_api/movies/schema/
+- Get a subset of items
+http://127.0.0.1:8000/movies_company/api/movies_api/movies/set/{{id_movie1}};{{id_movie2}};..../
+
+- Get/Update all the aliases and to create one alias:
+http://127.0.0.1:8000/movies_company/api/movies_api/aliases/
+- Get/Update the alias with id {{id_alias}}:
+http://127.0.0.1:8000/movies_company/api/movies_api/aliases/{{id_alias}}/
+- Get the resource’s schema for aliases
+http://127.0.0.1:8000/movies_company/api/movies_api/aliases/schema/
+- Get a subset of items
+http://127.0.0.1:8000/movies_company/api/movies_api/aliases/set/{{id_alias1}};{{id_alias2}};..../
+
+---------------------------------------
+
+Example with curl for each URL and request method (action) for aliases:
 Get Aliasses
 curl --dump-header - -H "Content-Type: application/json" -X GET 'http://127.0.0.1:8000/movies_company/api/movies_api/aliases/'
 
@@ -19,5 +65,7 @@ curl --dump-header - -H "Content-Type: application/json" -H "AUTHORIZATION: ApiK
 Replace the entire collection of Aliases
 curl --dump-header - -H "Content-Type: application/json" -H "AUTHORIZATION: ApiKey {{user}}:{{key}}" -X PUT --data '{"objects": [{"name":"{{alias}}", "id":"{{id}}"}, {"name":"{{alias}}", "id":"{{id}}"}]}' 'http://127.0.0.1:8000/movies_company/api/movies_api/aliases/'
 
+=======================================
 
-Asumo que hay alias que se repiten entre distintas personas
+Available methods:
+- int_to_roman (from utils.py): it converts an integer number to roman numerals
