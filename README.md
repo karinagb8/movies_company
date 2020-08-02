@@ -52,8 +52,18 @@ The admin site is accesible only by superusers with is_staff = True.
 
 Admin site:
 ---------------------------------------
+##### - Index admin page: 
 http://127.0.0.1:8000/admin
-
+##### - List of API Key (can view, edit and create API Keys): 
+http://127.0.0.1:8000/admin/tastypie/apikey/
+##### - List of users (can view, edit and create users): 
+http://127.0.0.1:8000/admin/auth/user/
+##### - List of Aliases (can view, edit and create Aliases): 
+http://127.0.0.1:8000/admin/movies_company/alias/
+##### - List of Persons (can view, edit and create Persons): 
+http://127.0.0.1:8000/admin/movies_company/person/
+##### - List of Movies (can view, edit and create Movies): 
+http://127.0.0.1:8000/admin/movies_company/movie/
 
 Persons:
 ---------------------------------------
