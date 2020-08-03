@@ -32,12 +32,18 @@ http://127.0.0.1:8000/admin
 
 Decissions:
 =======================================
-- The same alias can be used for two or more different users
-- Records can only be deleted using the admin site (superusers with is_staff = True)
-- The "trusted users" are the ones who are superusers (not staff) and they need an API Key that can be created only by admin users
+#### Libraries/Frameworks:
+- I used Django and Tastypie because they had all the necessary tools for this application and it is very simple to use.
 - I used sqlite because it was easier to start a database. It's not necessary to install any package or create the database, Django manages automaticaly everything. I usually use PostgreSQL.
+
+#### Models:
+- The same alias can be used for two or more different users
 - The fields for 'casting', 'producers' and 'directors' are at model Movie as a ManyToManyField with a related_name to access from model Person as 'movies_as_actor_actress', 'movies_as_producer', 'movies_as_director' respectively.
 - The fields 'id' for all the models are implicity defined by Django.
+
+#### Permissions:
+- Records can only be deleted using the admin site (superusers with is_staff = True) or replacing the entire collection by API
+- The "trusted users" are the ones who are superusers (not staff) and they need an API Key that can only be created by admin users
 
 
 Available methods:
@@ -65,7 +71,7 @@ http://127.0.0.1:8000/admin/movies_company/person/
 ##### - List of Movies (can view, edit and create Movies): 
 http://127.0.0.1:8000/admin/movies_company/movie/
 
-Persons:
+API for Persons:
 ---------------------------------------
 ##### - GET all the persons: 
 http://127.0.0.1:8000/api/persons/
@@ -82,8 +88,7 @@ http://127.0.0.1:8000/api/persons/schema/
 ##### - GET a subset of items with ids {{id_person1}}, {{id_person2}}: 
 http://127.0.0.1:8000/api/persons/set/{{id_person1}};{{id_person2}}/
 
-
-Movies:
+API for Movies:
 ---------------------------------------
 ##### - GET all the movies: 
 http://127.0.0.1:8000/api/movies/
@@ -100,8 +105,7 @@ http://127.0.0.1:8000/api/movies/schema/
 ##### - GET a subset of items: 
 http://127.0.0.1:8000/api/movies/set/{{id_movie1}};{{id_movie2}};..../
 
-
-Aliases:
+API for Aliases:
 ---------------------------------------
 ##### - GET all the aliases: 
 http://127.0.0.1:8000/api/aliases/
